@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Are you smarter than a JS muggle</title>
+    <title>Code Quiz</title>
     <link rel="stylesheet" href="./style.css">
-</head>
+</head> 
 <body>
-    <div class="carouselbox" aria-role="img" aria-label="carousel">
-        <div class="buttons">
-           <button class="prev">
-               Prev
-           </button> 
-           <button class="next">
-               Next
-           </button>
-        </div>
+    <div id="start">Are you smarter than a coding noob?</div>
+    <div id="quiz" style = "display: none;">
+        <div id="question"> <p> Question </p> </div>
+            <div id="timer">
+                <div id="container"> 6 </div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+            </div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+                <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+                <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+            </div>
+        <div id="progress"> <div class="prog"></div>
+    </div>
+    <div id ="scoreContainer" style = "display : none;" >       
     </div>
     <script src="./script.js"></script>
 </body>
