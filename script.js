@@ -18,13 +18,13 @@ let questions = [
     correct : "C"
 
   },{
-    question : "What does CSS stand for?",
+    question : "What does Html stand for?",
     choiceA : "Wrong",
     choiceB : "Wrong",
     choiceC : "Correct",
     correct : "C"
   },{
-    question : "What does CSS stand for?",
+    question : "What does JS stand for?",
     choiceA : "Wrong",
     choiceB : "Wrong",
     choiceC : "Correct",
@@ -41,6 +41,7 @@ const questionTime = 10;
 const gaugeWidth = 150;
 const gaugeUnit = gaugeWidth;
 let TIMER;
+let score = 0;
 
 
 //show Question
@@ -63,7 +64,6 @@ quiz.style.display = "block";
 renderCounter();
 TIMER = setInterval(renderCounter,1000);
 }
-//Counting
 
 function renderCounter(){
   if(count <= questionTime){
@@ -73,5 +73,56 @@ function renderCounter(){
     count++
   }else{
     count = 0;
+    if(runningQuestion < lastQuestion){
+        runningQuestion++;
+        renderQuestion();
+    }else{
+      // end quiz
+      clearInterval(TIMER);
+      scoreRender();
+    }
   }
+}
+
+//checkAnswer
+
+function checkAnswer(answer){
+  if( answer == questions[runningQuestion].correct){
+    // correct answer
+    score++;
+    answerIsCorrect();
+  }else{
+    // wrong answer
+    answerIsWrong();
+  }
+  count = 0; 
+  if(runningQuestion < lastQuestion){
+    runningQuestion++;
+    renderQuestion();
+  }else{
+    clearInterval(TIMER);
+    scoreRender();
+  }
+}
+
+//answer is right
+function answerIsCorrect(){
+  document.getElementById(runningQuestion)
+}
+
+function answerIsWrong(){
+  document.getElementById(runningQuestion)
+}
+
+//score render
+function scoreRender(){
+  scoreDiv.style.display = "block";
+  // calc score
+  const scorePerCent = Math.round(100 * 
+  score/questions.length);
+
+  // Scoreboard
+  // let board = (scorePerCent >= 80) ? "100%" :
+  scoreDiv.innerHTML += "<p>"+ scorePerCent +"</p>";
+
 }
