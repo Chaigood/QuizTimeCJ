@@ -8,6 +8,7 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const scoreDiv = document.getElementById("score");
+const highScore = document.getElementById("highscore")
 //Questions
 let questions = [
   {
@@ -18,19 +19,19 @@ let questions = [
     correct : "C"
 
   },{
-    question : "What does Html stand for?",
+    question : "What does DOM stand for?",
     choiceA : "Wrong",
     choiceB : "Wrong",
     choiceC : "Correct",
     correct : "C"
   },{
-    question : "What does JS stand for?",
+    question : "What does API stand for?",
     choiceA : "Wrong",
     choiceB : "Wrong",
     choiceC : "Correct",
     correct : "C"
   }
-
+  
 ];
 
 //Variables
@@ -68,8 +69,6 @@ TIMER = setInterval(renderCounter,1000);
 function renderCounter(){
   if(count <= questionTime){
     counter.innerHTML = count;
-    timeGauge.style.width = count * gaugeUnit +
-    "px";
     count++
   }else{
     count = 0;
@@ -120,9 +119,6 @@ function scoreRender(){
   // calc score
   const scorePerCent = Math.round(100 * 
   score/questions.length);
-
   // Scoreboard
-  // let board = (scorePerCent >= 80) ? "100%" :
   scoreDiv.innerHTML += "<p>"+ scorePerCent +"</p>";
-
 }
